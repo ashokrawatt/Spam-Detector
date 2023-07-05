@@ -1,5 +1,6 @@
 from flask import Flask , render_template, request
 import pickle
+import pandas as pd
 
 tokenizer = pickle.load(open("models/cv.pkl", "rb"))
 model = pickle.load(open("models/clf.pkl", "rb"))
@@ -18,7 +19,7 @@ def predict():
     tokenized_email = tokenizer.transform([email]) 
     predictions = model.predict(tokenized_email)
     predictions = 1 if predictions == 1 else -1
-    return render_template("index.html", predictions=predictions, email= email)
+    return render_template("index.html", predictions=predictions, email = email)
 
 if __name__ == "__main__":
     app.run(debug = True)
