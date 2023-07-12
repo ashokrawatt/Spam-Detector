@@ -1,5 +1,6 @@
 from flask import Flask , render_template, request
 import pickle
+import pandas as pd
 
 tokenizer = pickle.load(open("models/cv.pkl", "rb"))
 model = pickle.load(open("models/clf.pkl", "rb"))
